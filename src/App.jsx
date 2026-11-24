@@ -1,4 +1,4 @@
-import MainPage from "../src/pages/gradepage";
+import MainPage from "../src/pages/Gradepage";
 
 const App = () => {
   return <MainPage/>;
