@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import "../style/Gradepage.css";
-import CursorTrail from "../components/CursorTrail";
-import TeamSection from "../components/Teamsection";
-import { AccountPanel, ForgotPassword, VerifyEmailModal, maskEmail } from "../components/Accountsecurity";
+import CursorTrail from "../components/cursortrail";
+import TeamSection from "../components/teamsection";
+import { AccountPanel, ForgotPassword, VerifyEmailModal, maskEmail } from "../components/accountsecurity";
 
 /* ---------- SAMPLE DATA (replace with real data later) ---------- */
 /* Every student takes the same subjects, but each has their own scores. */
