@@ -265,7 +265,7 @@ const MainPage = () => {
                 <div className="video-container">
                     <iframe
                         src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-                            "https://www.facebook.com/100063952063392/videos/pcb.1624064966401890/1169239329405209"
+                            "https://www.facebook.com/reel/1169239329405209"
                         )}&show_text=false&t=0`}
                         title="Prodigal$ Facebook Video Showcase"
                         style={{
