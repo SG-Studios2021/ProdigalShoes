@@ -3,9 +3,15 @@ import { useEffect, useRef } from "react";
 // Wavy ribbon + glowing sparks + ripples cursor effect.
 // Adapted from the reference site's mouse trail, recoloured to GradeView yellow.
 function startCursorTrail(cvs, opts = {}) {
-  const C = opts.color || [255, 204, 31];          // --yellow in Gradepage.css
-  const rgba = (a, rgb = C) => `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
-  const HOT = [255, 247, 214];
+ // Change lines 6-8 from:
+// const C = opts.color || [255, 204, 31];
+// const rgba = (a, rgb = C) => `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+// const HOT = [255, 247, 214];
+
+// To this:
+const C = opts.color || [37, 137, 255];            // vibrant electric blue
+const rgba = (a, rgb = C) => `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+const HOT = [214, 238, 255];                       // icy blue-white spark core
   const ctx = cvs.getContext('2d');
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return () => {};                     // respect reduced motion (matches the paper's NFR 1.4)
