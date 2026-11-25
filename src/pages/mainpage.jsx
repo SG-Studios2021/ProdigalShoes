@@ -258,31 +258,21 @@ const MainPage = () => {
                     <h2>
                         Prodigal$
                         <br />
-                        pair check.
+                        Shoecase.
                     </h2>
                 </div>
                  
-
-                 <div className="video-container">
-    <iframe
-        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-            "https://www.facebook.com/reel/1169239329405209"
-        )}&show_text=false&width=380`}
-        title="Prodigal$ Facebook Reel"
-        style={{
-            width: "100%",
-            height: "100%",
-            border: "none",
-            overflow: "hidden",
-        }}
-        scrolling="no"
-        frameBorder="0"
-        allowFullScreen={true}
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-    />
-</div>
-
-             
+                <a
+    href="https://www.facebook.com/reel/1169239329405209"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="video-container video-link-card"
+>
+    <img src="/images/logoprodigal.png" alt="Watch Prodigal$ Reel" />
+    <div className="video-label">
+        <span>▶</span> WATCH THE FILM SHOECASING THE SHOES IN OUR INVENTORY! ↗
+    </div>
+</a>
             </section>
 
             {/* STORE GUARANTEES */}
