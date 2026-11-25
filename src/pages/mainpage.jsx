@@ -261,29 +261,28 @@ const MainPage = () => {
                         pair check.
                     </h2>
                 </div>
+                 
 
-                <div className="video-container">
-                    <iframe
-                        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
-                            "https://www.facebook.com/reel/1169239329405209"
-                        )}&show_text=false&t=0`}
-                        title="Prodigal$ Facebook Video Showcase"
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            border: "none",
-                            overflow: "hidden",
-                        }}
-                        scrolling="no"
-                        frameBorder="0"
-                        allowFullScreen={true}
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    />
+                 <div className="video-container">
+    <iframe
+        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+            "https://www.facebook.com/reel/1169239329405209"
+        )}&show_text=false&width=380`}
+        title="Prodigal$ Facebook Reel"
+        style={{
+            width: "100%",
+            height: "100%",
+            border: "none",
+            overflow: "hidden",
+        }}
+        scrolling="no"
+        frameBorder="0"
+        allowFullScreen={true}
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    />
+</div>
 
-                    <div className="video-label">
-                        <span>●</span> FILM SHOECASING THE SHOES IN OUR INVENTORY!
-                    </div>
-                </div>
+             
             </section>
 
             {/* STORE GUARANTEES */}
