@@ -45,7 +45,7 @@ export const SHOES = [
         colorway: "Cream / Teal / Hot Pink",
         description:
             "Breathable mesh mid-top ANTA basketball silhouette with speckled teal toe wrap, sculpted Flashfoam midsole pods, and hot-pink heel counter accents.",
-        image: UNSPLASH_PHOTOS.basketballTeal,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624847/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426361885&sig=b3cd09bde70678c4d85c8da58512aad1cf05bcb01f7a45ebd3ef3a271ae509f6",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -58,7 +58,7 @@ export const SHOES = [
         colorway: "Black / Woodland Camo / Total Orange",
         description:
             "Low-profile Nike cross-training sneaker pairing stealth black forefoot mesh with woodland camo collars, vibrant orange Swooshes, Flywire eyelets, and a gum outsole.",
-        image: UNSPLASH_PHOTOS.trainerDark,
+image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426361958&sig=779d13e0c57338a07faf30726e85188c57f0558c8a662883083af1b750895e76",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
