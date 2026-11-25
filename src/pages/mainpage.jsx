@@ -263,17 +263,25 @@ const MainPage = () => {
                 </div>
 
                 <div className="video-container">
-                    <video
-                        controls
-                        preload="metadata"
-                        poster="/images/logoprodigal.png"
-                    >
-                        <source src="/videos/about-us2.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe
+                        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
+                            "https://www.facebook.com/100063952063392/videos/pcb.1624064966401890/1169239329405209"
+                        )}&show_text=false&t=0`}
+                        title="Prodigal$ Facebook Video Showcase"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            border: "none",
+                            overflow: "hidden",
+                        }}
+                        scrolling="no"
+                        frameBorder="0"
+                        allowFullScreen={true}
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    />
 
                     <div className="video-label">
-                        <span>●</span> ON-HAND LEGIT CHECK & SHOWCASE
+                        <span>●</span> FILM SHOECASING THE SHOES IN OUR INVENTORY!
                     </div>
                 </div>
             </section>
