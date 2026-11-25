@@ -270,7 +270,7 @@ const MainPage = () => {
 >
     <img src="/images/logoprodigal.png" alt="Watch Prodigal$ Reel" />
     <div className="video-label">
-        <span>▶</span> Wathc! ↗
+        <span>▶</span> Watch! ↗
     </div>
 </a>
             </section>
