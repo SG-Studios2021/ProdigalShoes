@@ -32,7 +32,7 @@ export const SHOES = [
         colorway: "Sail / Multi-Patch",
         description:
             "Klay Thompson's signature high-cut ANTA KT4 knit basketball shoe featuring removable Velcro All-Star patches (2016 Toronto, 2017 New Orleans, 2018 L.A.), Rocco bulldog emblem, and graphic midsole wrap.",
-        image: UNSPLASH_PHOTOS.basketballHigh,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624849/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426361714&sig=112048ce4e8079357754da5594d3272135e7dd64af5db799e6a5dc05db2f85e1",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
