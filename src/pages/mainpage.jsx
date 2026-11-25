@@ -267,12 +267,10 @@ const MainPage = () => {
     target="_blank"
     rel="noopener noreferrer"
     className="video-container video-link-card"
->git add .
-git commit -m "E"
-git push
+>
     <img src="/images/logoprodigal.png" alt="Watch Prodigal$ Reel" />
     <div className="video-label">
-        <span>▶</span> Watch! ↗
+        <span>▶</span> Wathc! ↗
     </div>
 </a>
             </section>
