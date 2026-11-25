@@ -143,8 +143,8 @@ const MainPage = () => {
                         >
                             <div className="person-image">
                                 <span className="price-badge">
-                                    {formatPHP(shoe.price)}
-                                </span>
+    {shoe.price}
+</span>
                                 <img src={shoe.image} alt={shoe.name} />
                             </div>
 
@@ -156,9 +156,9 @@ const MainPage = () => {
 
                                 <h3>{shoe.name}</h3>
 
-                                <p className="role">
-                                    {formatPHP(shoe.price)} • {shoe.condition}
-                                </p>
+                              <p className="role">
+    {shoe.price} • {shoe.condition}
+</p>
 
                                 <p>{shoe.description}</p>
 
