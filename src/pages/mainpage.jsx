@@ -1,34 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import CursorTrail from "../components/cursortrail";
 import { SHOES } from "../data/shoes";
 import "../style/mainpage.css";
 
-const formatPHP = (amount) => `₱${Number(amount).toLocaleString("en-PH")}`;
-
 const MainPage = () => {
-    const trailRef = useRef([]);
     const [activeFilter, setActiveFilter] = useState("All");
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            const particle = document.createElement("div");
-            particle.className = "cursor-particle";
-            particle.style.left = `${e.clientX}px`;
-            particle.style.top = `${e.clientY}px`;
-            document.body.appendChild(particle);
-            trailRef.current.push(particle);
-
-            setTimeout(() => {
-                particle.remove();
-                trailRef.current = trailRef.current.filter((item) => item !== particle);
-            }, 600);
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            trailRef.current.forEach((particle) => particle.remove());
-        };
-    }, []);
 
     // Automatically builds filter tabs from whatever categories you put in src/data/shoes.js
     const categories = ["All", ...new Set(SHOES.map((shoe) => shoe.category))];
@@ -40,6 +16,8 @@ const MainPage = () => {
 
     return (
         <div className="portfolio">
+            <CursorTrail />
+
             {/* NAVBAR */}
             <nav className="navbar">
                 <a href="#home" className="logo">
@@ -143,8 +121,8 @@ const MainPage = () => {
                         >
                             <div className="person-image">
                                 <span className="price-badge">
-    {shoe.price}
-</span>
+                                    {shoe.price}
+                                </span>
                                 <img src={shoe.image} alt={shoe.name} />
                             </div>
 
@@ -156,9 +134,9 @@ const MainPage = () => {
 
                                 <h3>{shoe.name}</h3>
 
-                              <p className="role">
-    {shoe.price} • {shoe.condition}
-</p>
+                                <p className="role">
+                                    {shoe.price} • {shoe.condition}
+                                </p>
 
                                 <p>{shoe.description}</p>
 
@@ -261,18 +239,18 @@ const MainPage = () => {
                         Shoecase.
                     </h2>
                 </div>
-                 
+
                 <a
-    href="https://www.facebook.com/reel/1169239329405209"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="video-container video-link-card"
->
-    <img src="/images/logoprodigal.png" alt="Watch Prodigal$ Reel" />
-    <div className="video-label">
-        <span>▶</span> Watch! ↗
-    </div>
-</a>
+                    href="https://www.facebook.com/reel/1169239329405209"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="video-container video-link-card"
+                >
+                    <img src="/images/logoprodigal.png" alt="Watch Prodigal$ Reel" />
+                    <div className="video-label">
+                        <span>▶</span> Watch! ↗
+                    </div>
+                </a>
             </section>
 
             {/* STORE GUARANTEES */}

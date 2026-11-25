@@ -218,7 +218,7 @@ button {
 }
 
 /* =========================
-   HERO SNEAKER STACK
+   HERO SNEAKER STACK & LOGO ORB
 ========================= */
 
 .hero-profiles {
@@ -227,56 +227,41 @@ button {
     position: relative;
 }
 
-.profile-photo {
-    position: absolute;
-    width: 230px;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 130px 130px 20px 20px;
-    border: 1px solid rgba(37, 137, 255, .3);
-    background: #111;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
-    transition: .5s;
+.hero-logo-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.profile-photo img {
+.hero-logo-orb {
+    position: relative;
+    z-index: 2;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 36px;
+    background: radial-gradient(circle at 30% 30%, #161b26, #0a0a0c 75%);
+    border: 1px solid rgba(37, 137, 255, 0.45);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.8),
+        0 0 70px rgba(37, 137, 255, 0.25);
+    display: grid;
+    place-items: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.hero-logo-orb:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.85),
+        0 0 95px rgba(37, 137, 255, 0.42);
+}
+
+.hero-logo-orb img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-}
-
-.photo-one {
-    top: 10px;
-    left: 0;
-    transform: rotate(-9deg);
-    z-index: 2;
-}
-
-.photo-two {
-    top: 40px;
-    right: 10px;
-    transform: rotate(8deg);
-    z-index: 1;
-}
-
-.photo-three {
-    bottom: 10px;
-    left: 40px;
-    transform: rotate(6deg);
-    z-index: 3;
-}
-
-.photo-four {
-    bottom: 30px;
-    right: 0;
-    transform: rotate(-6deg);
-    z-index: 4;
-}
-
-.profile-photo:hover {
-    transform: rotate(0) translateY(-10px);
-    border-color: var(--accent);
-    z-index: 10;
+    object-fit: contain;
+    display: block;
 }
 
 .circle-decoration {
@@ -450,46 +435,13 @@ button {
     color: #eee;
 }
 
-/* SIZE SELECTOR */
-.size-block {
-    margin-top: 28px;
-}
-
-.size-block strong {
-    display: block;
-    font-size: 11px;
-    color: #777;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.size-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.size-btn {
-    padding: 9px 14px;
-    border-radius: 10px;
-    border: 1px solid #2b2b2b;
-    background: #111;
-    color: #ccc;
-    font-size: 13px;
-    font-weight: 500;
-    transition: .2s;
-}
-
-.size-btn:hover {
-    border-color: var(--accent);
-    color: #fff;
-}
-
-.size-btn.selected {
-    background: rgba(37, 137, 255, 0.18);
-    border-color: var(--accent);
-    color: #fff;
+.size-highlight {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: rgba(37, 137, 255, 0.16);
+    border: 1px solid rgba(37, 137, 255, 0.45);
+    color: #fff !important;
     font-weight: 700;
 }
 
@@ -498,7 +450,7 @@ button {
 }
 
 /* =========================
-   CRAFTSMANSHIP
+   HOW TO ORDER
 ========================= */
 
 .journey {
@@ -543,7 +495,7 @@ button {
 }
 
 /* =========================
-   VIDEO
+   SHOWCASE REEL
 ========================= */
 
 .media-section {
@@ -584,12 +536,6 @@ button {
 
 .video-link-card:hover img {
     transform: scale(1.06);
-}
-
-.video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .video-label {
@@ -692,188 +638,6 @@ footer {
 }
 
 /* =========================
-   SHOPPING BAG DRAWER
-========================= */
-
-.cart-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.72);
-    backdrop-filter: blur(6px);
-    z-index: 1000;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.cart-drawer {
-    width: 100%;
-    max-width: 420px;
-    height: 100%;
-    background: #0e0e0e;
-    border-left: 1px solid #242424;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #222;
-}
-
-.cart-header h3 {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 22px;
-}
-
-.close-btn {
-    background: #181818;
-    border: 1px solid #2d2d2d;
-    color: #ccc;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-}
-
-.cart-empty {
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    color: #888;
-}
-
-.cart-empty h4 {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 24px;
-    color: var(--accent-soft);
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 20px 0;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px;
-    border-radius: 14px;
-    background: #141414;
-    border: 1px solid #222;
-}
-
-.cart-item img {
-    width: 64px;
-    height: 64px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.cart-item-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.cart-item-info h4 {
-    font-size: 14px;
-}
-
-.cart-item-info span {
-    font-size: 12px;
-    color: #888;
-}
-
-.cart-item-info strong {
-    font-size: 14px;
-    color: var(--accent-soft);
-}
-
-.qty-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.qty-controls button {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    border: 1px solid #333;
-    background: #1a1a1a;
-    color: #fff;
-}
-
-.cart-footer {
-    border-top: 1px solid #222;
-    padding-top: 20px;
-}
-
-.cart-subtotal {
-    display: flex;
-    justify-content: space-between;
-    font-size: 18px;
-    margin-bottom: 6px;
-}
-
-.cart-note {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 16px;
-}
-
-.checkout-btn {
-    width: 100%;
-    text-align: center;
-}
-
-/* =========================
-   CURSOR TRAIL (ELECTRIC BLUE)
-========================= */
-
-.cursor-particle {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow:
-        0 0 6px var(--accent),
-        0 0 12px rgba(37, 137, 255, 0.75);
-    pointer-events: none;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    animation: cursorTrail 0.55s ease-out forwards;
-    z-index: 99999;
-}
-
-@keyframes cursorTrail {
-    0% {
-        opacity: 0.95;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    40% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1.7);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0);
-    }
-}
-
-/* =========================
    RESPONSIVE
 ========================= */
 
@@ -889,7 +653,7 @@ footer {
 
     .hero-profiles {
         width: 100%;
-        height: 500px;
+        height: 420px;
         margin-top: 60px;
     }
 
@@ -934,32 +698,13 @@ footer {
     }
 
     .hero-profiles {
-        height: 420px;
+        height: 320px;
     }
 
-    .profile-photo {
-        width: 160px;
+    .hero-logo-orb {
+        width: 220px;
         height: 220px;
-    }
-
-    .photo-one {
-        top: 0;
-        left: 0;
-    }
-
-    .photo-two {
-        top: 10px;
-        right: 0;
-    }
-
-    .photo-three {
-        bottom: 0;
-        left: 20px;
-    }
-
-    .photo-four {
-        bottom: 10px;
-        right: 10px;
+        padding: 24px;
     }
 
     .circle-decoration {
@@ -1010,64 +755,5 @@ footer {
     .footer-bottom {
         flex-direction: column;
         gap: 10px;
-    }
-}
-
-/* =========================
-   HERO LOGO-ONLY ORB
-========================= */
-
-.hero-logo-only {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-logo-orb {
-    position: relative;
-    z-index: 2;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    padding: 36px;
-    background: radial-gradient(circle at 30% 30%, #161b26, #0a0a0c 75%);
-    border: 1px solid rgba(37, 137, 255, 0.45);
-    box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.8),
-        0 0 70px rgba(37, 137, 255, 0.25);
-    display: grid;
-    place-items: center;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.hero-logo-orb:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow:
-        0 35px 100px rgba(0, 0, 0, 0.85),
-        0 0 95px rgba(37, 137, 255, 0.42);
-}
-
-.hero-logo-orb img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.size-highlight {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 8px;
-    background: rgba(37, 137, 255, 0.16);
-    border: 1px solid rgba(37, 137, 255, 0.45);
-    color: #fff !important;
-    font-weight: 700;
-}
-
-@media (max-width: 650px) {
-    .hero-logo-orb {
-        width: 220px;
-        height: 220px;
-        padding: 24px;
     }
 }
