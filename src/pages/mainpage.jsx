@@ -1,641 +1,574 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../style/mainpage.css";
 
+const SHOES = [
+    {
+        id: "ps-01",
+        num: "01",
+        name: "Prodigal$ Apex Low 'Cobalt'",
+        category: "Streetwear",
+        price: 185,
+        colorway: "Obsidian / Electric Cobalt",
+        material: "Full-Grain Italian Leather",
+        edition: "Limited Drop • 300 Pairs",
+        description:
+            "Engineered with a sculpted dual-density midsole and hand-burnished cobalt leather overlays. Built for all-day street presence with zero break-in time.",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80",
+        sizes: ["US 7", "US 8", "US 9", "US 10", "US 11", "US 12"],
+    },
+    {
+        id: "ps-02",
+        num: "02",
+        name: "Prodigal$ Phantom Runner",
+        category: "Performance",
+        price: 210,
+        colorway: "Stealth Black / Ice Blue",
+        material: "Carbon-Weave Mesh & Pebax",
+        edition: "Core Series • Restocked",
+        description:
+            "Ultra-lightweight carbon-plated cushioning wrapped in breathable ballistic knit. Designed to return energy on every stride from morning miles to late-night runs.",
+        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=80",
+        sizes: ["US 7.5", "US 8.5", "US 9.5", "US 10", "US 11"],
+    },
+    {
+        id: "ps-03",
+        num: "03",
+        name: "Prodigal$ Monarch High '85",
+        category: "Basketball",
+        price: 245,
+        colorway: "Midnight / Arctic White",
+        material: "Tumbled Nubuck & Suede",
+        edition: "Vault Release • Numbered",
+        description:
+            "An elevated heritage high-top featuring reinforced ankle lockdown, vintage cream foxing, and custom metal lace dubraes stamped with the Prodigal$ crest.",
+        image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80",
+        sizes: ["US 8", "US 9", "US 9.5", "US 10.5", "US 11", "US 12"],
+    },
+    {
+        id: "ps-04",
+        num: "04",
+        name: "Prodigal$ Drift Court",
+        category: "Luxury",
+        price: 165,
+        colorway: "Pure Chalk / Deep Navy",
+        material: "Calfskin & Gum Rubber",
+        edition: "Studio Capsule",
+        description:
+            "Minimalist court silhouette stripped down to clean architectural lines, memory-foam footbeds, and a high-grip translucent gum outsole.",
+        image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=80",
+        sizes: ["US 7", "US 8", "US 9", "US 10", "US 11"],
+    },
+];
 
 const MainPage = () => {
     const trailRef = useRef([]);
+    const [selectedSizes, setSelectedSizes] = useState({
+        "ps-01": "US 9",
+        "ps-02": "US 9.5",
+        "ps-03": "US 10.5",
+        "ps-04": "US 9",
+    });
+    const [activeFilter, setActiveFilter] = useState("All");
+    const [cart, setCart] = useState([]);
+    const [cartOpen, setCartOpen] = useState(false);
+    const [checkedOut, setCheckedOut] = useState(false);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
             const particle = document.createElement("div");
-
             particle.className = "cursor-particle";
-
             particle.style.left = `${e.clientX}px`;
             particle.style.top = `${e.clientY}px`;
-
             document.body.appendChild(particle);
-
             trailRef.current.push(particle);
 
             setTimeout(() => {
                 particle.remove();
-
-                trailRef.current = trailRef.current.filter(
-                    (item) => item !== particle
-                );
+                trailRef.current = trailRef.current.filter((item) => item !== particle);
             }, 600);
         };
 
         window.addEventListener("mousemove", handleMouseMove);
-
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
-
-            trailRef.current.forEach((particle) => {
-                particle.remove();
-            });
+            trailRef.current.forEach((particle) => particle.remove());
         };
     }, []);
 
+    const handleAddToCart = (shoe) => {
+        const size = selectedSizes[shoe.id] || shoe.sizes[0];
+        setCheckedOut(false);
+        setCart((prev) => {
+            const existingIndex = prev.findIndex(
+                (item) => item.id === shoe.id && item.size === size
+            );
+            if (existingIndex > -1) {
+                const updated = [...prev];
+                updated[existingIndex].qty += 1;
+                return updated;
+            }
+            return [
+                ...prev,
+                {
+                    id: shoe.id,
+                    name: shoe.name,
+                    price: shoe.price,
+                    image: shoe.image,
+                    size,
+                    qty: 1,
+                },
+            ];
+        });
+        setCartOpen(true);
+    };
+
+    const updateQty = (index, delta) => {
+        setCart((prev) =>
+            prev
+                .map((item, i) => (i === index ? { ...item, qty: item.qty + delta } : item))
+                .filter((item) => item.qty > 0)
+        );
+    };
+
+    const handleCheckout = () => {
+        setCheckedOut(true);
+        setCart([]);
+    };
+
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    const visibleShoes =
+        activeFilter === "All"
+            ? SHOES
+            : SHOES.filter((shoe) => shoe.category === activeFilter);
+
     return (
         <div className="portfolio">
-
             {/* NAVBAR */}
             <nav className="navbar">
-                <div className="logo">
-                    ABOUT<span>US.</span>
-                </div>
+                <a href="#home" className="logo">
+                    <img
+                        src="/images/logoprodigal.png"
+                        alt="Prodigal$ Logo"
+                        className="logo-img"
+                        onError={(e) => (e.currentTarget.style.display = "none")}
+                    />
+                    PRODIGAL<span>$.</span>
+                </a>
 
                 <div className="nav-links">
                     <a href="#home">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#journey">Journey</a>
-                    <a href="#media">Media</a>
+                    <a href="#drops">Drops</a>
+                    <a href="#craft">Craft</a>
+                    <a href="#lookbook">Lookbook</a>
                 </div>
-            </nav>
 
+                <button className="cart-trigger" onClick={() => setCartOpen(true)}>
+                    Bag <span>{totalItems}</span>
+                </button>
+            </nav>
 
             {/* HERO SECTION */}
             <section className="hero" id="home">
-
                 <div className="hero-content">
-
-                    <p className="small-title">
-                        WELCOME TO OUR PROFILE
-                    </p>
+                    <p className="small-title">SEASON 2026 • LIMITED FOOTWEAR</p>
 
                     <h1>
-                        Hello, We're
-                        <span> The Four of Us.</span>
+                        Step Into
+                        <span> Prodigal$.</span>
                     </h1>
 
                     <p className="hero-description">
-                        Four students from Davao City with different
-                        personalities, experiences, and stories,
-                        brought together through friendship, school,
-                        and this class activity.
+                        Architectural silhouettes, Italian leather uppers, and
+                        street-tested cushioning. Limited-batch sneakers crafted
+                        for those who never blend into the pavement.
                     </p>
 
                     <div className="hero-buttons">
-                        <a href="#about" className="primary-btn">
-                            Explore Us →
+                        <a href="#drops" className="primary-btn">
+                            Shop Latest Drop →
                         </a>
 
-                        <a href="#media" className="secondary-btn">
-                            Watch Video
+                        <a href="#lookbook" className="secondary-btn">
+                            Watch Lookbook
                         </a>
                     </div>
-
                 </div>
 
-
-                {/* PROFILE PHOTOS */}
+                {/* HERO SNEAKER STACK */}
                 <div className="hero-profiles">
-
                     <div className="profile-photo photo-one">
-                        <img
-                            src="/images/cris.png"
-                            alt="Cris Lourence Vale"
-                        />
+                        <img src={SHOES[0].image} alt={SHOES[0].name} />
                     </div>
 
                     <div className="profile-photo photo-two">
-                        <img
-                            src="/images/edrian.png"
-                            alt="Edrian Caburnay"
-                        />
+                        <img src={SHOES[1].image} alt={SHOES[1].name} />
                     </div>
 
                     <div className="profile-photo photo-three">
-                        <img
-                            src="/images/neil.png"
-                            alt="Neil Bryan Emmanuel A. Nana"
-                        />
+                        <img src={SHOES[2].image} alt={SHOES[2].name} />
                     </div>
 
                     <div className="profile-photo photo-four">
-                        <img
-                            src="/images/nilrex.png"
-                            alt="Nilrex P. Urquiza"
-                        />
+                        <img src={SHOES[3].image} alt={SHOES[3].name} />
                     </div>
 
                     <div className="circle-decoration"></div>
-
                 </div>
-
             </section>
 
-
-            {/* ABOUT US */}
-            <section className="section" id="about">
-
+            {/* FEATURED DROPS */}
+            <section className="section" id="drops">
                 <div className="section-heading">
-
-                    <p>01 — ABOUT US</p>
-
+                    <p>01 — FEATURED DROPS</p>
                     <h2>
-                        Four people.
+                        Four silhouettes.
                         <br />
-                        Four stories.
+                        Zero compromises.
                     </h2>
-
                 </div>
 
+                <div className="filter-bar">
+                    {["All", "Streetwear", "Performance", "Basketball", "Luxury"].map(
+                        (cat) => (
+                            <button
+                                key={cat}
+                                className={`filter-pill ${
+                                    activeFilter === cat ? "active" : ""
+                                }`}
+                                onClick={() => setActiveFilter(cat)}
+                            >
+                                {cat}
+                            </button>
+                        )
+                    )}
+                </div>
 
                 <div className="about-grid">
-
-                    {/* CRIS */}
-                    <div className="person-card">
-
-                        <div className="person-image">
-
-                            <img
-                                src="/images/cris.png"
-                                alt="Cris Lourence Vale"
-                            />
-
-                        </div>
-
-
-                        <div className="person-info">
-
-                            <span>01</span>
-
-                            <h3>Cris Lourence Vale</h3>
-
-                            <p className="role">
-                                Student • 19 Years Old
-                            </p>
-
-                            <p>
-                                Hi! I'm Cris Lourence Vale, a 19-year-old
-                                student from Davao City. I am currently
-                                studying at St. John Paul II College of
-                                Davao. I enjoy learning new things,
-                                exploring my interests, working on
-                                creative projects, and creating meaningful
-                                memories with the people around me.
-                            </p>
-
-
-                            <div className="facts">
-
-                                <div>
-                                    <strong>Age</strong>
-                                    <span>19 Years Old</span>
-                                </div>
-
-                                <div>
-                                    <strong>Location</strong>
-                                    <span>Davao City</span>
-                                </div>
-
-                                <div>
-                                    <strong>School</strong>
-                                    <span>St. John Paul II College</span>
-                                </div>
-
+                    {visibleShoes.map((shoe, idx) => (
+                        <div
+                            key={shoe.id}
+                            className={`person-card ${idx % 2 === 1 ? "reverse" : ""}`}
+                        >
+                            <div className="person-image">
+                                <span className="price-badge">${shoe.price}</span>
+                                <img src={shoe.image} alt={shoe.name} />
                             </div>
 
-                        </div>
+                            <div className="person-info">
+                                <span>
+                                    {shoe.num} • {shoe.category.toUpperCase()}
+                                </span>
 
-                    </div>
+                                <h3>{shoe.name}</h3>
 
+                                <p className="role">
+                                    ${shoe.price} USD • {shoe.edition}
+                                </p>
 
-                    {/* EDRIAN */}
-                    <div className="person-card reverse">
+                                <p>{shoe.description}</p>
 
-                        <div className="person-image">
+                                <div className="facts">
+                                    <div>
+                                        <strong>Colorway</strong>
+                                        <span>{shoe.colorway}</span>
+                                    </div>
 
-                            <img
-                                src="/images/edrian.png"
-                                alt="Edrian Caburnay"
-                            />
-
-                        </div>
-
-
-                        <div className="person-info">
-
-                            <span>02</span>
-
-                            <h3>Edrian Caburnay</h3>
-
-                            <p className="role">
-                                Student • 21 Years Old
-                            </p>
-
-                            <p>
-                                Hi! I'm Edrian Caburnay, a 21-year-old
-                                student from Davao City. I am currently
-                                studying at St. John Paul II College of
-                                Davao. I enjoy spending time with friends,
-                                learning through new experiences, and
-                                developing myself as I continue my
-                                journey as a student.
-                            </p>
-
-
-                            <div className="facts">
-
-                                <div>
-                                    <strong>Age</strong>
-                                    <span>21 Years Old</span>
+                                    <div>
+                                        <strong>Upper</strong>
+                                        <span>{shoe.material}</span>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <strong>Location</strong>
-                                    <span>Davao City</span>
+                                {/* SIZE SELECTOR */}
+                                <div className="size-block">
+                                    <strong>Select Size</strong>
+                                    <div className="size-grid">
+                                        {shoe.sizes.map((size) => (
+                                            <button
+                                                key={size}
+                                                type="button"
+                                                className={`size-btn ${
+                                                    selectedSizes[shoe.id] === size
+                                                        ? "selected"
+                                                        : ""
+                                                }`}
+                                                onClick={() =>
+                                                    setSelectedSizes((prev) => ({
+                                                        ...prev,
+                                                        [shoe.id]: size,
+                                                    }))
+                                                }
+                                            >
+                                                {size}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <strong>School</strong>
-                                    <span>St. John Paul II College</span>
+                                <div className="shop-actions">
+                                    <button
+                                        type="button"
+                                        className="primary-btn"
+                                        onClick={() => handleAddToCart(shoe)}
+                                    >
+                                        Add to Bag — ${shoe.price}
+                                    </button>
                                 </div>
-
                             </div>
-
                         </div>
-
-                    </div>
-
-
-                    {/* NEIL */}
-                    <div className="person-card">
-
-                        <div className="person-image">
-
-                            <img
-                                src="/images/neil.png"
-                                alt="Neil Bryan Emmanuel A. Nana"
-                            />
-
-                        </div>
-
-
-                        <div className="person-info">
-
-                            <span>03</span>
-
-                            <h3>Neil Bryan Emmanuel A. Nana</h3>
-
-                            <p className="role">
-                                Student • 22 Years Old
-                            </p>
-
-                            <p>
-                                Hi! I'm Neil Bryan Emmanuel A. Nana, a
-                                22-year-old student from Davao City. I am
-                                currently studying at St. John Paul II
-                                College of Davao. I'm interested in
-                                systems and figuring out how things work
-                                under the hood, and I try to keep our
-                                group on schedule.
-                            </p>
-
-
-                            <div className="facts">
-
-                                <div>
-                                    <strong>Age</strong>
-                                    <span>22 Years Old</span>
-                                </div>
-
-                                <div>
-                                    <strong>Location</strong>
-                                    <span>Davao City</span>
-                                </div>
-
-                                <div>
-                                    <strong>School</strong>
-                                    <span>St. John Paul II College</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    {/* NILREX */}
-                    <div className="person-card reverse">
-
-                        <div className="person-image">
-
-                            <img
-                                src="/images/nilrex.png"
-                                alt="Nilrex P. Urquiza"
-                            />
-
-                        </div>
-
-
-                        <div className="person-info">
-
-                            <span>04</span>
-
-                            <h3>Nilrex P. Urquiza</h3>
-
-                            <p className="role">
-                                Student • 21 Years Old
-                            </p>
-
-                            <p>
-                                Hi! I'm Nilrex P. Urquiza, a 21-year-old
-                                student from Davao City. I am currently
-                                studying at St. John Paul II College of
-                                Davao. I enjoy putting ideas into motion
-                                and making sure everyone's work comes
-                                together into one finished thing.
-                            </p>
-
-
-                            <div className="facts">
-
-                                <div>
-                                    <strong>Age</strong>
-                                    <span>21 Years Old</span>
-                                </div>
-
-                                <div>
-                                    <strong>Location</strong>
-                                    <span>Davao City</span>
-                                </div>
-
-                                <div>
-                                    <strong>School</strong>
-                                    <span>St. John Paul II College</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                    ))}
                 </div>
-
             </section>
 
-
-            {/* OUR JOURNEY */}
-            <section className="journey section" id="journey">
-
+            {/* CRAFTSMANSHIP / DESIGN PROCESS */}
+            <section className="journey section" id="craft">
                 <div className="section-heading center">
-
-                    <p>02 — OUR JOURNEY</p>
-
+                    <p>02 — HOW IT'S BUILT</p>
                     <h2>
-                        Our story,
+                        Engineered from
                         <br />
-                        our experiences.
+                        the sole up.
                     </h2>
-
                 </div>
-
 
                 <div className="timeline">
-
                     <div className="timeline-item">
-
-                        <div className="timeline-number">
-                            01
-                        </div>
-
+                        <div className="timeline-number">01</div>
                         <div>
-
-                            <span>THE BEGINNING</span>
-
-                            <h3>
-                                Meeting & Getting to Know Each Other
-                            </h3>
-
+                            <span>THE LAST & SILHOUETTE</span>
+                            <h3>Sculpted Ergonomic Lasts</h3>
                             <p>
-                                As students, we met and gradually became
-                                familiar with each other through school,
-                                activities, and shared experiences.
+                                Every Prodigal$ sneaker begins with a custom-molded
+                                anatomical last for an immediate, locked-in midfoot
+                                fit without toe-box pinch.
                             </p>
-
                         </div>
-
                     </div>
 
-
                     <div className="timeline-item">
-
-                        <div className="timeline-number">
-                            02
-                        </div>
-
+                        <div className="timeline-number">02</div>
                         <div>
-
-                            <span>THE EXPERIENCE</span>
-
-                            <h3>
-                                Learning & Growing
-                            </h3>
-
+                            <span>THE MATERIALS</span>
+                            <h3>Full-Grain Leathers & Carbon Plates</h3>
                             <p>
-                                School gave us different challenges and
-                                experiences that helped us become more
-                                responsible, confident, and mature.
+                                We source heavyweight aniline hides, hydrophobic
+                                suedes, and aerospace-grade Pebax foam built to age
+                                with character over thousands of miles.
                             </p>
-
                         </div>
-
                     </div>
 
-
                     <div className="timeline-item">
-
-                        <div className="timeline-number">
-                            03
-                        </div>
-
+                        <div className="timeline-number">03</div>
                         <div>
-
-                            <span>TODAY</span>
-
-                            <h3>
-                                Continuing the Journey
-                            </h3>
-
+                            <span>THE RELEASE</span>
+                            <h3>Small-Batch Numbered Drops</h3>
                             <p>
-                                Today, we continue learning, improving
-                                ourselves, building friendships, and
-                                working toward our future goals.
+                                No mass overproduction. Every release is stitched in
+                                numbered runs and shipped direct to your door in
+                                collector magnetic boxes.
                             </p>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </section>
 
-
-            {/* VIDEO SECTION */}
-            <section className="section media-section" id="media">
-
+            {/* LOOKBOOK VIDEO */}
+            <section className="section media-section" id="lookbook">
                 <div className="section-heading">
-
-                    <p>03 — OUR STORY IN MOTION</p>
-
+                    <p>03 — CAMPAIGN FILM</p>
                     <h2>
-                        Meet us
+                        Prodigal$
                         <br />
-                        through video.
+                        in motion.
                     </h2>
-
                 </div>
 
-
                 <div className="video-container">
-
                     <video
                         controls
                         preload="metadata"
-                        poster="/images/edrian.png"
+                        poster={SHOES[0].image}
                     >
-
-                        <source
-                            src="/videos/about-us2.mp4"
-                            type="video/mp4"
-                        />
-
+                        <source src="/videos/about-us2.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
-
                     </video>
 
-
-                  
-
+                    <div className="video-label">
+                        <span>●</span> SS26 STREETWEAR LOOKBOOK
+                    </div>
                 </div>
-
             </section>
 
-
-            {/* FUN FACTS */}
+            {/* STORE GUARANTEES */}
             <section className="facts-section section">
-
                 <div className="section-heading center">
-
-                    <p>04 — GET TO KNOW US</p>
-
+                    <p>04 — THE PRODIGAL$ STANDARD</p>
                     <h2>
-                        More than just
+                        Built for collectors
                         <br />
-                        students.
+                        and daily wearers.
                     </h2>
-
                 </div>
-
 
                 <div className="fact-grid">
-
                     <div className="fact-card">
-
                         <span>01</span>
-
-                        <h3>
-                            Location
-                        </h3>
-
+                        <h3>Express Shipping</h3>
                         <p>
-                            We are all from Davao City,
-                            Philippines.
+                            Same-day dispatch on orders before 3 PM with
+                            double-boxed protective transit.
                         </p>
-
                     </div>
 
-
                     <div className="fact-card">
-
                         <span>02</span>
-
-                        <h3>
-                            School
-                        </h3>
-
+                        <h3>100% Authentic</h3>
                         <p>
-                            We are all students of
-                            St. John Paul II College of Davao.
+                            Every pair includes an NFC-chipped authenticity tag
+                            and numbered certificate.
                         </p>
-
                     </div>
 
-
                     <div className="fact-card">
-
                         <span>03</span>
-
-                        <h3>
-                            Friendship
-                        </h3>
-
+                        <h3>30-Day Size Swap</h3>
                         <p>
-                            Different personalities and experiences
-                            can create meaningful friendships.
+                            Need half a size up or down? Unworn pairs exchange
+                            free of charge within 30 days.
                         </p>
-
                     </div>
-
 
                     <div className="fact-card">
-
                         <span>04</span>
-
-                        <h3>
-                            Our Goal
-                        </h3>
-
+                        <h3>VIP Drop Access</h3>
                         <p>
-                            To continue learning, growing, and
-                            building a successful future.
+                            Members unlock 24-hour early access to limited
+                            collaborations and vault restocks.
                         </p>
-
                     </div>
-
                 </div>
-
             </section>
-
 
             {/* FOOTER */}
             <footer>
-
                 <div className="footer-title">
-
-                    <p>
-                        THANK YOU FOR VISITING
-                    </p>
-
+                    <p>OWN YOUR STRIDE</p>
                     <h2>
-                        This is
-                        <span> our story.</span>
+                        Walk with
+                        <span> Prodigal$.</span>
                     </h2>
-
                 </div>
-
 
                 <div className="footer-bottom">
-
-                    <span>
-                        © 2026 Vale, Caburnay, Nana & Urquiza
-                    </span>
-
-                    <span>
-                        St. John Paul II College of Davao
-                    </span>
-
+                    <span>© 2026 Prodigal$ Footwear Co. All rights reserved.</span>
+                    <span>Davao City • Worldwide Shipping</span>
                 </div>
-
             </footer>
 
+            {/* SLIDE-OUT SHOPPING BAG */}
+            {cartOpen && (
+                <div className="cart-overlay" onClick={() => setCartOpen(false)}>
+                    <aside
+                        className="cart-drawer"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="cart-header">
+                            <h3>Your Bag ({totalItems})</h3>
+                            <button
+                                className="close-btn"
+                                onClick={() => setCartOpen(false)}
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        {checkedOut ? (
+                            <div className="cart-empty">
+                                <h4>Order Confirmed!</h4>
+                                <p>
+                                    Thank you for shopping with Prodigal$. Your
+                                    pairs are being prepped for dispatch.
+                                </p>
+                                <button
+                                    className="primary-btn"
+                                    onClick={() => {
+                                        setCheckedOut(false);
+                                        setCartOpen(false);
+                                    }}
+                                >
+                                    Continue Shopping
+                                </button>
+                            </div>
+                        ) : cart.length === 0 ? (
+                            <div className="cart-empty">
+                                <p>Your Prodigal$ bag is currently empty.</p>
+                                <button
+                                    className="secondary-btn"
+                                    onClick={() => setCartOpen(false)}
+                                >
+                                    Browse Drops
+                                </button>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="cart-items">
+                                    {cart.map((item, idx) => (
+                                        <div
+                                            key={`${item.id}-${item.size}`}
+                                            className="cart-item"
+                                        >
+                                            <img src={item.image} alt={item.name} />
+                                            <div className="cart-item-info">
+                                                <h4>{item.name}</h4>
+                                                <span>Size: {item.size}</span>
+                                                <strong>
+                                                    ${item.price * item.qty}
+                                                </strong>
+                                            </div>
+                                            <div className="qty-controls">
+                                                <button
+                                                    onClick={() =>
+                                                        updateQty(idx, -1)
+                                                    }
+                                                >
+                                                    −
+                                                </button>
+                                                <span>{item.qty}</span>
+                                                <button
+                                                    onClick={() =>
+                                                        updateQty(idx, 1)
+                                                    }
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="cart-footer">
+                                    <div className="cart-subtotal">
+                                        <span>Subtotal</span>
+                                        <strong>${subtotal} USD</strong>
+                                    </div>
+                                    <p className="cart-note">
+                                        Free double-boxed express shipping included.
+                                    </p>
+                                    <button
+                                        className="primary-btn checkout-btn"
+                                        onClick={handleCheckout}
+                                    >
+                                        Checkout — ${subtotal}
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                    </aside>
+                </div>
+            )}
         </div>
     );
 };

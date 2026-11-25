@@ -1,7 +1,7 @@
-import MainPage from "../src/pages/Gradepage";
+import MainPage from "./pages/mainpage";
 
 const App = () => {
-  return <MainPage/>;
-}
+  return <MainPage />;
+};
 
-export default App
+export default App;

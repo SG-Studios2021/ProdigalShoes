@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+:root {
+    --accent: #2589ff;
+    --accent-soft: #7ab8ff;
+    --accent-glow: rgba(37, 137, 255, .22);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +27,11 @@ a {
     text-decoration: none;
 }
 
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
 .portfolio {
     min-height: 100vh;
     overflow: hidden;
@@ -33,29 +44,38 @@ a {
 .navbar {
     width: 100%;
     height: 80px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 7%;
-
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-
+    background: rgba(8, 8, 8, 0.78);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     z-index: 100;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: "Space Grotesk", sans-serif;
     font-size: 23px;
     font-weight: 700;
     letter-spacing: -1px;
 }
 
+.logo-img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
 .logo span {
-    opacity: .45;
+    color: var(--accent);
 }
 
 .nav-links {
@@ -70,7 +90,34 @@ a {
 }
 
 .nav-links a:hover {
-    color: white;
+    color: var(--accent-soft);
+}
+
+.cart-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(37, 137, 255, 0.45);
+    background: rgba(37, 137, 255, 0.12);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.cart-trigger:hover {
+    background: var(--accent);
+}
+
+.cart-trigger span {
+    background: #fff;
+    color: #080808;
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 /* =========================
@@ -79,20 +126,16 @@ a {
 
 .hero {
     min-height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 130px 7% 80px;
-
     position: relative;
-
     background:
         radial-gradient(
             circle at 80% 45%,
-            rgba(125, 75, 255, .18),
-            transparent 35%
+            var(--accent-glow),
+            transparent 38%
         ),
         #080808;
 }
@@ -105,7 +148,7 @@ a {
 
 .small-title,
 .section-heading p {
-    color: #8f8f8f;
+    color: var(--accent);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 3px;
@@ -121,13 +164,9 @@ a {
 }
 
 .hero h1 span {
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #8b6cff
-    );
-
+    background: linear-gradient(90deg, #ffffff, var(--accent));
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -142,36 +181,44 @@ a {
     display: flex;
     gap: 15px;
     margin-top: 35px;
+    flex-wrap: wrap;
 }
 
 .primary-btn,
 .secondary-btn {
-    padding: 15px 23px;
+    padding: 15px 25px;
     border-radius: 50px;
     font-size: 14px;
+    font-weight: 600;
     transition: .3s;
+    display: inline-block;
 }
 
 .primary-btn {
-    background: white;
-    color: black;
+    background: var(--accent);
+    border: none;
+    color: #fff;
 }
 
 .primary-btn:hover {
     transform: translateY(-3px);
+    background: var(--accent-soft);
+    color: #080808;
 }
 
 .secondary-btn {
+    background: transparent;
     border: 1px solid #333;
     color: #ddd;
 }
 
 .secondary-btn:hover {
-    border-color: #777;
+    border-color: var(--accent);
+    color: var(--accent-soft);
 }
 
 /* =========================
-   HERO PHOTOS (4-up fanned stack)
+   HERO SNEAKER STACK
 ========================= */
 
 .hero-profiles {
@@ -182,19 +229,13 @@ a {
 
 .profile-photo {
     position: absolute;
-
     width: 230px;
     height: 300px;
-
     overflow: hidden;
-
     border-radius: 130px 130px 20px 20px;
-
-    border: 1px solid rgba(255,255,255,.15);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.6);
-
+    border: 1px solid rgba(37, 137, 255, .3);
+    background: #111;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
     transition: .5s;
 }
 
@@ -234,29 +275,24 @@ a {
 
 .profile-photo:hover {
     transform: rotate(0) translateY(-10px);
+    border-color: var(--accent);
     z-index: 10;
 }
 
 .circle-decoration {
     position: absolute;
-
     width: 480px;
     height: 480px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
+    border: 1px solid rgba(37, 137, 255, .2);
     border-radius: 50%;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     z-index: 0;
 }
 
 /* =========================
-   SECTIONS
+   SECTIONS & FILTER BAR
 ========================= */
 
 .section {
@@ -274,12 +310,41 @@ a {
     text-align: center;
 }
 
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.filter-pill {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #2b2b2b;
+    background: #111;
+    color: #aaa;
+    font-size: 13px;
+    transition: .25s;
+}
+
+.filter-pill:hover {
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.filter-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+}
+
 /* =========================
-   ABOUT
+   PRODUCT SHOWCASE
 ========================= */
 
 .about-grid {
-    margin-top: 90px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     gap: 120px;
@@ -301,9 +366,28 @@ a {
 }
 
 .person-image {
+    position: relative;
     height: 550px;
     overflow: hidden;
     border-radius: 20px;
+    border: 1px solid #222;
+    background: #111;
+}
+
+.price-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(8, 8, 8, 0.85);
+    border: 1px solid rgba(37, 137, 255, 0.45);
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    backdrop-filter: blur(8px);
 }
 
 .person-image img {
@@ -320,17 +404,20 @@ a {
 .person-info > span {
     color: #777;
     font-size: 13px;
+    letter-spacing: 2px;
 }
 
 .person-info h3 {
     font-family: "Space Grotesk", sans-serif;
-    font-size: 55px;
-    margin: 12px 0 5px;
+    font-size: 46px;
+    line-height: 1.05;
+    margin: 12px 0 8px;
 }
 
 .role {
-    color: #8f6cff;
-    margin-bottom: 30px;
+    color: var(--accent-soft);
+    font-weight: 600;
+    margin-bottom: 24px;
 }
 
 .person-info > p:not(.role) {
@@ -341,28 +428,77 @@ a {
 
 .facts {
     display: flex;
-    gap: 50px;
-    margin-top: 40px;
+    gap: 45px;
+    margin-top: 32px;
 }
 
 .facts div {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
 }
 
 .facts strong {
-    font-size: 12px;
+    font-size: 11px;
     color: #777;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .facts span {
     font-size: 14px;
+    color: #eee;
+}
+
+/* SIZE SELECTOR */
+.size-block {
+    margin-top: 28px;
+}
+
+.size-block strong {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.size-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.size-btn {
+    padding: 9px 14px;
+    border-radius: 10px;
+    border: 1px solid #2b2b2b;
+    background: #111;
+    color: #ccc;
+    font-size: 13px;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.size-btn:hover {
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.size-btn.selected {
+    background: rgba(37, 137, 255, 0.18);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 700;
+}
+
+.shop-actions {
+    margin-top: 28px;
 }
 
 /* =========================
-   JOURNEY
+   CRAFTSMANSHIP
 ========================= */
 
 .journey {
@@ -378,14 +514,12 @@ a {
     display: grid;
     grid-template-columns: 100px 1fr;
     gap: 40px;
-
     padding: 40px 0;
-
     border-top: 1px solid #292929;
 }
 
 .timeline-number {
-    font-family: "Space Grotesk";
+    font-family: "Space Grotesk", sans-serif;
     font-size: 35px;
     color: #777;
 }
@@ -393,11 +527,11 @@ a {
 .timeline-item span {
     font-size: 11px;
     letter-spacing: 2px;
-    color: #8f6cff;
+    color: var(--accent);
 }
 
 .timeline-item h3 {
-    font-family: "Space Grotesk";
+    font-family: "Space Grotesk", sans-serif;
     font-size: 32px;
     margin: 10px 0;
 }
@@ -419,15 +553,11 @@ a {
 .video-container {
     margin-top: 70px;
     position: relative;
-
     width: 100%;
     aspect-ratio: 16 / 9;
-
     border-radius: 20px;
     overflow: hidden;
-
     border: 1px solid #252525;
-
     background: #111;
 }
 
@@ -441,25 +571,21 @@ a {
     position: absolute;
     bottom: 25px;
     left: 25px;
-
-    background: rgba(0,0,0,.7);
-
+    background: rgba(0, 0, 0, .75);
     padding: 12px 17px;
-
     border-radius: 50px;
-
     font-size: 12px;
     letter-spacing: 1px;
-
     backdrop-filter: blur(10px);
 }
 
 .video-label span {
+    color: var(--accent);
     margin-right: 8px;
 }
 
 /* =========================
-   FUN FACTS
+   PERKS GRID
 ========================= */
 
 .facts-section {
@@ -468,22 +594,17 @@ a {
 
 .fact-grid {
     margin-top: 70px;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
     border-top: 1px solid #292929;
     border-left: 1px solid #292929;
 }
 
 .fact-card {
     min-height: 250px;
-
     padding: 30px;
-
     border-right: 1px solid #292929;
     border-bottom: 1px solid #292929;
-
     transition: .3s;
 }
 
@@ -492,12 +613,12 @@ a {
 }
 
 .fact-card span {
-    color: #777;
+    color: var(--accent);
     font-size: 12px;
 }
 
 .fact-card h3 {
-    font-family: "Space Grotesk";
+    font-family: "Space Grotesk", sans-serif;
     font-size: 23px;
     margin: 50px 0 15px;
 }
@@ -524,7 +645,7 @@ footer {
 }
 
 .footer-title h2 {
-    font-family: "Space Grotesk";
+    font-family: "Space Grotesk", sans-serif;
     font-size: clamp(50px, 8vw, 120px);
     line-height: .9;
     letter-spacing: -6px;
@@ -532,65 +653,199 @@ footer {
 }
 
 .footer-title h2 span {
-    color: #777;
+    color: var(--accent);
 }
 
 .footer-bottom {
     margin-top: 150px;
     padding-top: 25px;
-
     border-top: 1px solid #252525;
-
     display: flex;
     justify-content: space-between;
-
     color: #666;
     font-size: 12px;
 }
 
 /* =========================
-   CURSOR TRAIL
+   SHOPPING BAG DRAWER
+========================= */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-drawer {
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    background: #0e0e0e;
+    border-left: 1px solid #242424;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #222;
+}
+
+.cart-header h3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 22px;
+}
+
+.close-btn {
+    background: #181818;
+    border: 1px solid #2d2d2d;
+    color: #ccc;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+
+.cart-empty {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    color: #888;
+}
+
+.cart-empty h4 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 24px;
+    color: var(--accent-soft);
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 14px;
+    background: #141414;
+    border: 1px solid #222;
+}
+
+.cart-item img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-item-info h4 {
+    font-size: 14px;
+}
+
+.cart-item-info span {
+    font-size: 12px;
+    color: #888;
+}
+
+.cart-item-info strong {
+    font-size: 14px;
+    color: var(--accent-soft);
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-controls button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.cart-footer {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+}
+
+.cart-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.cart-note {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 16px;
+}
+
+.checkout-btn {
+    width: 100%;
+    text-align: center;
+}
+
+/* =========================
+   CURSOR TRAIL (ELECTRIC BLUE)
 ========================= */
 
 .cursor-particle {
-    width: 2px;
-    height: 2px;
-
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-
-    background: #8f6cff;
-
+    background: var(--accent);
     box-shadow:
-        0 0 4px #8f6cff,
-        0 0 8px rgba(143, 108, 255, 0.6);
-
+        0 0 6px var(--accent),
+        0 0 12px rgba(37, 137, 255, 0.75);
     pointer-events: none;
     position: fixed;
-
     transform: translate(-50%, -50%);
-
-    animation: cursorTrail 0.45s ease-out forwards;
-
+    animation: cursorTrail 0.55s ease-out forwards;
     z-index: 99999;
 }
 
 @keyframes cursorTrail {
-
     0% {
-        opacity: 0.9;
+        opacity: 0.95;
         transform: translate(-50%, -50%) scale(1);
     }
-
     40% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.7);
     }
-
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
     }
-
 }
 
 /* =========================
@@ -598,7 +853,6 @@ footer {
 ========================= */
 
 @media (max-width: 1000px) {
-
     .hero {
         flex-direction: column;
         align-items: flex-start;
@@ -630,7 +884,6 @@ footer {
 }
 
 @media (max-width: 650px) {
-
     .navbar {
         padding: 0 5%;
     }
@@ -703,7 +956,7 @@ footer {
     }
 
     .person-info h3 {
-        font-size: 38px;
+        font-size: 36px;
     }
 
     .facts {
