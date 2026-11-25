@@ -326,7 +326,7 @@ export const SHOES = [
     },
     {
         id: "ps-26",
-        name: "Kappa Retro Court Trainer 'Sand & Crimson'",
+       name: "Retro Gum-Sole Mesh Trainer 'Sand & Crimson'",
         category: "Lifestyle",
         price: "₱450 – ₱1,500",
         sizeAvailable: "EU 35–36",
