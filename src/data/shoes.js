@@ -1,26 +1,3 @@
-const UNSPLASH_PHOTOS = {
-    basketballHigh:
-        "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80",
-    basketballTeal:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
-    trainerDark:
-        "https://images.unsplash.com/photo-1604147495798-57beb5d6af73?auto=format&fit=crop&w=800&q=80",
-    jordanLow:
-        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80",
-    yellowConverse:
-        "https://images.unsplash.com/photo-1550631392-26e6823af219?auto=format&fit=crop&w=800&q=80",
-    canvasSkate:
-        "https://images.unsplash.com/photo-1515917683569-c2c8da28df09?auto=format&fit=crop&w=800&q=80",
-    whiteLow:
-        "https://images.unsplash.com/photo-1445308124430-8357b98a6f71?auto=format&fit=crop&w=800&q=80",
-    studioSneaker:
-        "https://images.unsplash.com/photo-1650912912276-230285f0daa9?auto=format&fit=crop&w=800&q=80",
-    jordanMid:
-        "https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=800&q=80",
-    leatherLoafer:
-        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-};
-
 export const SHOES = [
     {
         id: "ps-01",
@@ -58,7 +35,7 @@ export const SHOES = [
         colorway: "Black / Woodland Camo / Total Orange",
         description:
             "Low-profile Nike cross-training sneaker pairing stealth black forefoot mesh with woodland camo collars, vibrant orange Swooshes, Flywire eyelets, and a gum outsole.",
-image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426361958&sig=779d13e0c57338a07faf30726e85188c57f0558c8a662883083af1b750895e76",
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426361958&sig=779d13e0c57338a07faf30726e85188c57f0558c8a662883083af1b750895e76",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -71,7 +48,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "White / Light Smoke Grey / Black",
         description:
             "Classic low-top Air Jordan 1 combining crisp white leather toe boxes with soft grey suede overlays, black Swooshes, and vintage cream midsoles.",
-        image: UNSPLASH_PHOTOS.jordanLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624839/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362053&sig=94819470692dfd27f13d53698fe2f69a7f1824f1e0f9282cdc7e8d411fea8446",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -84,7 +61,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Sand / Black / Polka-Dot",
         description:
             "Signature Lou Williams PEAK court sneaker loaded with textured sand overlays, dotted midfoot cages, rope laces, and a gold-rimmed 'LW' heel badge.",
-        image: UNSPLASH_PHOTOS.jordanMid,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624837/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362134&sig=974e5bd78b27fea21b87d0a7b22d2997c4d19322643370567c73c870150b4bf5",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -97,7 +74,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Oatmeal / Off-White / Teal",
         description:
             "Everyday heritage New Balance 574 crafted in soft oatmeal suede and breathable mesh with classic 'N' branding and subtle teal heel collar detailing.",
-        image: UNSPLASH_PHOTOS.whiteLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624852/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362178&sig=e5d194fdf4c13cd3057b9fcb752777523d2880eb8588089c53cfe680aa1e8b8f",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -110,7 +87,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Jet Black / Fiery Orange",
         description:
             "Quick-lacing dial-lock ANTA performance runner wrapped in black mesh with bold flame graphics along the midsole and responsive cushioning.",
-        image: UNSPLASH_PHOTOS.basketballTeal,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624840/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362242&sig=b22bc64c57b72f18d72cc5669ba1f403904b08f8d982fd123c042a0d3cc2f2cb",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -123,7 +100,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Blush Pink / Cream White",
         description:
             "Chunky-soled ASICS lifestyle runner featuring translucent mesh cutouts, toggle-lock pastel pink laces, and a sculpted cushioned midsole.",
-        image: UNSPLASH_PHOTOS.jordanLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624834/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362273&sig=0e3201f38b43dacdd3c8ed0c7205af9c073bfc7df9d48032001ce9eb7de9a31b",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -136,7 +113,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Royal Blue / Magenta Pink",
         description:
             "Lightweight retro Li-Ning low-top pairing a vivid royal-blue upper with contrasting hot-pink laces and plush inner lining.",
-        image: UNSPLASH_PHOTOS.canvasSkate,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624843/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362287&sig=5977b4c7d3e57c8a0a8b146848326a84bd377da9a19b2cd7870d11f5a837dca2",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -149,7 +126,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Crisp White / Black Heel Tab",
         description:
             "Iconic Alexander McQueen luxury platform silhouette in smooth white leather with wide flat laces, perforated side vents, and a contrasting black heel counter.",
-        image: UNSPLASH_PHOTOS.whiteLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624856/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362306&sig=1b958279dc5b4df43ff26d11c68b63923f504f6db18ec8b2d84d088fb75c2e70",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -162,7 +139,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Crisp White / Jet Black",
         description:
             "Clean everyday court sneaker featuring bold triple-black side stripes, gold foil side lettering, and a contrast black heel tab.",
-        image: UNSPLASH_PHOTOS.whiteLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624854/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362317&sig=dcacd22ad160b45f362fdfeaaf27e6afa58dacbaf85588fc5facb8746ff800ab",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -175,7 +152,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Charcoal Black / Chalk White",
         description:
             "Chunky platform canvas low-top crafted with contrast white piping, ribbed rubber toe caps, and woven side label detailing.",
-        image: UNSPLASH_PHOTOS.canvasSkate,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624848/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362332&sig=4708a822a21ed997349ae64a0f72322be104fbdff723968437ffcc38ca6bbfde",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -188,7 +165,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Cream Sand / Matte Black",
         description:
             "Sculpted stacked-wave midsole sneaker layering soft cream suede panels over black mesh with a rugged lugged outsole.",
-        image: UNSPLASH_PHOTOS.studioSneaker,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624833/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362353&sig=83fe7010e36fad971d1e2504c13ea9815ec2c1576a91357c2b5db2348462eea1",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -201,7 +178,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Off-White / Black / Cool Grey",
         description:
             "Lightweight retro-sport Warrior trainer topped with a signature Velcro forefoot strap over black mesh and cushioned grey collars.",
-        image: UNSPLASH_PHOTOS.trainerDark,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624841/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362368&sig=6db02d77d181a45da03b8b6c0f33eac0e815ea6d0f2d915c98ac98dcf80734aa",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -214,7 +191,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Sunflower Yellow / Egret White",
         description:
             "Timeless Converse Chuck Taylor high-top in vibrant sunflower-mustard canvas with classic ankle patch, silver eyelets, and black foxing pinstripe.",
-        image: UNSPLASH_PHOTOS.yellowConverse,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624857/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362380&sig=6a17df8d82afa3104585eda8e5fec480797dfe857edbd74f44a8313f9cff0b6b",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -227,7 +204,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Pure White / Multi-Color Ribbon",
         description:
             "Statement Alexander McQueen white leather platform sneaker elevated with wide rainbow-gradient ribbon laces and signature chunky rubber sole.",
-        image: UNSPLASH_PHOTOS.jordanLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624851/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362394&sig=f4301c94d143950571d09d18f0454e1cf45a82e4f6f5b217c99229c0a47e2ac0",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -240,7 +217,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Ash Grey / Sail White",
         description:
             "Supple grey suede Nike Blazer Low accented with oversized sail-white Swoosh panels, tonal laces, and durable vulcanized rubber tooling.",
-        image: UNSPLASH_PHOTOS.studioSneaker,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624850/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362409&sig=439899f64073fe1b2d17d00ac2fe075237a2907119c370c29e9f22e923c23e62",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -253,7 +230,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Crimson Red / White",
         description:
             "Bold crimson-red high-top canvas sneaker finished with contrast white stitching, bright white laces, and a star ankle emblem.",
-        image: UNSPLASH_PHOTOS.basketballTeal,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624853/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362423&sig=7a7d5579bd6c957c5a994d5f12fa692f1d2f8f7c3235737cecf274e035e1a862",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -266,7 +243,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Jet Black / Olive Brown / White",
         description:
             "Two-tone canvas low-top highlighted by decorative white zigzag stitching, rubber toe cap, and star side emblem.",
-        image: UNSPLASH_PHOTOS.canvasSkate,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624858/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362433&sig=29bc121207de040d9225c74352c19a99b396e5cfd44557f2a1f49b219c0bb888",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -279,7 +256,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Obsidian Black / Cream / Gum",
         description:
             "Sleek T-toe suede and leather terrace sneaker featuring twin cream side stripes and a classic dark-gum rubber cupsole.",
-        image: UNSPLASH_PHOTOS.trainerDark,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624838/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362452&sig=f7df09fe365f619e73694fe6910e5cac276b3be7a71b1d4b17fabc95474c361b",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -292,7 +269,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Glacier Blue / Dusty Rose",
         description:
             "Low-top 361° performance basketball shoe featuring breathable glacier-blue mesh, translucent forefoot overlays, and metallic rose tongue medallions.",
-        image: UNSPLASH_PHOTOS.basketballHigh,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624845/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362481&sig=ff2db0718d1ad5395adec01df886f5214c050c5c6661985541630515f1864303",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -305,7 +282,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Matte Black",
         description:
             "Clean slip-on platform penny loafer built with a durable lugged sole and classic vamp strap—ideal for school or smart-casual daily wear.",
-        image: UNSPLASH_PHOTOS.leatherLoafer,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624835/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362516&sig=c68e9e6e1ab1dc13b570a7a9a3a20bc9e4f4b2b2f3c7263438b18af3b3be156f",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -318,7 +295,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Core Black / Metallic Gold",
         description:
             "High-collar Derrick Rose signature Adidas basketball sneaker wrapped in ribbed stealth-black mesh with gold rose tongue emblems and Bounce cushioning.",
-        image: UNSPLASH_PHOTOS.trainerDark,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624846/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362530&sig=d7296f7fc6ef3d72def3606a266aa1036a54a26b4dd101b3b888d6167f1607f4",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -331,7 +308,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "White / Tangerine / Violet / Cyan",
         description:
             "Bold multi-color toggle-lace ANTA runner accented with script side graphics, bright yellow collars, cyan toe hits, and a sculpted purple heel pod.",
-        image: UNSPLASH_PHOTOS.jordanMid,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624842/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362551&sig=1f2943ea82e84b39aaae47af1284be19993c3c1b7bca6a067206d7ca439a123a",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -344,7 +321,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Soft Cream / Off-White",
         description:
             "Tonal cream leather and mesh trainer anchored by a heavily textured waffle-lugged outsole that wraps up the sidewall for extra grip.",
-        image: UNSPLASH_PHOTOS.whiteLow,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624836/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362577&sig=7aa757f1f80a0482a05662154b8f2a995b7605ac10f7c9224458dffee64b6f3c",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
     {
@@ -357,7 +334,7 @@ image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624855/0.jpg?s=1&p=MzA
         colorway: "Warm Sand / Crimson Red / Gum",
         description:
             "Vintage-inspired Kappa low-profile runner combining sand suede overlays, airy white mesh, a bold crimson side sweep, and a classic gum rubber sole.",
-        image: UNSPLASH_PHOTOS.studioSneaker,
+        image: "https://cdn-resize-prod-com.500px.cloud/photo/3001624844/0.jpg?s=1&p=MzAwMDE0MDI4NQ&t=QkFTSUM&expiry=2426362596&sig=040d99dda0812e60ec129aad9880523d48e82721e6dae3912c32e0d79778fecf",
         fbMarketplaceUrl: "https://www.facebook.com/share/p/1CVGWoPFzk/",
     },
 ];
